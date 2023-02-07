@@ -3,7 +3,7 @@ import { NotFoundCpfException } from '~/errors/not-found-cpf.exception';
 import { CpfRepository } from '~/repository/cpf.repository';
 
 @Injectable()
-export class VerifyIfCpfRegistered {
+export class VerifyIfCpfRegisteredService {
   constructor(
     private CpfRepository: CpfRepository,
   ) {}

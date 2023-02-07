@@ -1,5 +1,5 @@
 import { PipeTransform, Injectable, ArgumentMetadata } from '@nestjs/common';
-import { InvalidCpfException } from '../../errors/invalid-cpf.exception';
+import { InvalidCpfException } from '~/errors/invalid-cpf.exception';
 
 @Injectable()
 export class CpfValidationPipe implements PipeTransform {
