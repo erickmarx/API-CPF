@@ -2,7 +2,7 @@ import { PipeTransform, Injectable, ArgumentMetadata } from '@nestjs/common';
 import { InvalidCpfException } from '~/errors/invalid-cpf.exception';
 
 @Injectable()
-export class CpfValidationPipe implements PipeTransform {
+export class CpfTransformPipe implements PipeTransform {
   transform(cpf: string, metadata: ArgumentMetadata) {
     const removeSpecialCharsCpf = cpf.replace(/[^\d]/g, '');
 
