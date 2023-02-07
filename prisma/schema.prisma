@@ -7,9 +7,11 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model CPF {
+model cpf {
   id        String    @id @default(auto()) @map("_id") @db.ObjectId
   cpf       String    @db.String
   createdAt DateTime  @default(now()) @db.Timestamp
   deletedAt DateTime? @db.Timestamp
+
+  @@unique([cpf, deletedAt])
 }
