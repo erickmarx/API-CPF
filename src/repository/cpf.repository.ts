@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { cpf } from '@prisma/client';
-import { PrismaService } from '~/infra/prisma/prisma.service';
+import { PrismaService } from '~/shared/infra/prisma/prisma.service';
 
 @Injectable()
 export class CpfRepository {

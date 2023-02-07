@@ -1,8 +1,9 @@
 import { Module } from '@nestjs/common';
-import { PrismaModule } from './infra/prisma/prisma.module';
+import { PrismaModule } from './shared/infra/prisma/prisma.module';
 import { RepositoryModule } from './repository/repository.module';
+import { CpfModule } from './modules/cpf/cpf.module';
 
 @Module({
-  imports: [PrismaModule, RepositoryModule],
+  imports: [PrismaModule, RepositoryModule, CpfModule],
 })
 export class AppModule {}

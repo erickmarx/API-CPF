@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
-import { CPFRepository } from './cpf.repository';
-import { PrismaModule } from '../infra/prisma/prisma.module';
+import { CpfRepository } from './cpf.repository';
+import { PrismaModule } from '~/shared/infra/prisma/prisma.module';
 
 @Module({
   imports: [PrismaModule],
-  providers: [CPFRepository],
-  exports: [CPFRepository],
+  providers: [CpfRepository],
+  exports: [CpfRepository],
 })
 export class RepositoryModule {}
