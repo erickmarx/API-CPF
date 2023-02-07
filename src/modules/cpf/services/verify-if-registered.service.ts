@@ -5,11 +5,11 @@ import { CpfRepository } from '~/repository/cpf.repository';
 @Injectable()
 export class VerifyIfCpfRegisteredService {
   constructor(
-    private CpfRepository: CpfRepository,
+    private cpfRepository: CpfRepository,
   ) {}
 
-  async verify(cpfInputed: string) {
-    const verifiedCpf = await this.CpfRepository.get(cpfInputed);
+  async verify(cpf: string) {
+    const verifiedCpf = await this.cpfRepository.get(cpf);
 
     if (!verifiedCpf) throw new NotFoundCpfException();
 
