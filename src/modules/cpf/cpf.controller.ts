@@ -1,4 +1,4 @@
-import { Controller, Delete, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { VerifyIfCpfRegisteredService } from './services/verify-if-registered.service';
 import { CpfTransformPipe } from '~/shared/pipes/cpf-validation.pipe';
 import { GetAllCpfService } from './services/get-all.service';
@@ -29,7 +29,7 @@ export class CpfController {
 
   @Post()
   async register(
-    @Param('cpf', CpfTransformPipe) cpf: string,
+    @Body('cpf', CpfTransformPipe) cpf: string,
   ): Promise<CpfOnlyResponse> {
     return await this.registerCpfService.register(cpf);
   }

@@ -4,6 +4,8 @@ import { InvalidCpfException } from '~/errors/invalid-cpf.exception';
 @Injectable()
 export class CpfTransformPipe implements PipeTransform {
   transform(cpf: string) {
+    if (!cpf) throw new InvalidCpfException();
+
     const removeSpecialCharsCpf = cpf.replace(/[^\d]/g, '');
 
     if (cpf.length !== 11) throw new InvalidCpfException();
@@ -11,6 +13,8 @@ export class CpfTransformPipe implements PipeTransform {
     const validateCpf = this.validate(removeSpecialCharsCpf);
 
     if (!validateCpf) throw new InvalidCpfException();
+
+    return cpf;
   }
 
   private validate(cpf: string) {
