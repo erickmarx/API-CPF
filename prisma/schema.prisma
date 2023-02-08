@@ -12,6 +12,4 @@ model cpf {
   cpf       String    @db.String
   createdAt DateTime  @default(now()) @db.Timestamp
   deletedAt DateTime? @db.Timestamp
-
-  @@unique([cpf, deletedAt])
 }

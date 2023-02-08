@@ -1,12 +1,12 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { EveryExceptionFilter } from './shared/filters/every-exception.filter';
+import { EveryHttpExceptionFilter } from './shared/filters/every-exception.filter';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
-    logger: ['log','error',]
+    logger: ['log', 'error'],
   });
-  app.useGlobalFilters(new EveryExceptionFilter());
+  app.useGlobalFilters(new EveryHttpExceptionFilter());
   await app.listen(3000);
 }
 bootstrap();

@@ -11,6 +11,6 @@ export class DeleteCpfService {
 
     if (!verifiedCpf) throw new NotFoundCpfException();
 
-    await this.cpfRepository.delete(cpf);
+    await this.cpfRepository.delete(verifiedCpf.id);
   }
 }

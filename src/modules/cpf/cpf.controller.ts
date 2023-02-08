@@ -34,7 +34,7 @@ export class CpfController {
     return await this.registerCpfService.register(cpf);
   }
 
-  @Delete()
+  @Delete(':cpf')
   async delete(@Param('cpf', CpfTransformPipe) cpf: string) {
     await this.deleteCpfService.delete(cpf);
   }
