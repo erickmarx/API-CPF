@@ -3,10 +3,9 @@ import { NotFoundCpfException } from '~/errors/not-found-cpf.exception';
 import { CpfRepository } from '~/repository/cpf.repository';
 import { CpfResponse } from '../@types/cpf-response.type';
 
-
 @Injectable()
 //Service para verificar se o CPF já está registrado
-export class VerifyIfCpfRegisteredService { 
+export class VerifyIfCpfRegisteredService {
   constructor(private cpfRepository: CpfRepository) {}
 
   async verify(cpf: string): Promise<CpfResponse> {

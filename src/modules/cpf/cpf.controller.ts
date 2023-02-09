@@ -1,10 +1,12 @@
 import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
-import { VerifyIfCpfRegisteredService } from './services/verify-if-registered.service';
-import { CpfTransformPipe } from '~/shared/pipes/cpf-validation.pipe';
-import { GetAllCpfService } from './services/get-all.service';
 import { CpfResponse, CpfOnlyResponse } from './@types/cpf-response.type';
-import { RegisterCpfService } from './services/register.service';
-import { DeleteCpfService } from './services/delete.service';
+import { CpfTransformPipe } from '../../shared/pipes/cpf-validation.pipe';
+import {
+  VerifyIfCpfRegisteredService,
+  GetAllCpfService,
+  RegisterCpfService,
+  DeleteCpfService,
+} from './services';
 
 @Controller('cpf')
 export class CpfController {

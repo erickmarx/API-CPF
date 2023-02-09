@@ -43,7 +43,7 @@ export class CpfRepository {
 
 export namespace CpfRepository {
   export type GetAll = Pick<cpf, 'cpf' | 'createdAt'>[];
-  export type Get = Omit<cpf, 'deletedAt'>;
+  export type Get = Omit<cpf, 'deletedAt'> | null;
   export type Create = Pick<cpf, 'cpf'>;
   export type Delete = void;
 }
