@@ -6,6 +6,7 @@ import { PrismaService } from '~/shared/infra/prisma/prisma.service';
 export class CpfRepository {
   constructor(private prismaService: PrismaService) {}
 
+  //Pega o registro do CPF não deletado
   async get(cpf: string): Promise<CpfRepository.Get> {
     return await this.prismaService.cpf.findFirst({
       where: { cpf, deletedAt: null },
@@ -13,6 +14,8 @@ export class CpfRepository {
     });
   }
 
+
+  //Pega todos os registros de CPFs não deletados
   async getAll(): Promise<CpfRepository.GetAll> {
     return await this.prismaService.cpf.findMany({
       where: { deletedAt: null },
@@ -20,6 +23,7 @@ export class CpfRepository {
     });
   }
 
+  //Cria um registro de CPF
   async create(cpf: string): Promise<CpfRepository.Create> {
     return await this.prismaService.cpf.create({
       data: { cpf, deletedAt: null },
@@ -27,6 +31,7 @@ export class CpfRepository {
     });
   }
 
+  //Deleta um registro de um CPF não deletado
   async delete(id: string): Promise<CpfRepository.Delete> {
     await this.prismaService.cpf.update({
       where: { id },
