@@ -73,17 +73,17 @@ describe('CpfController', () => {
     it('should return a empty list', async () => {
       jest.spyOn(getAllCpfService, 'get').mockResolvedValueOnce([]);
 
-      expect(cpfController.getAll()).resolves.toEqual([]);
+      await expect(cpfController.getAll()).resolves.toEqual([]);
 
       expect(getAllCpfService.get).toHaveBeenCalledTimes(1);
 
       expect(getAllCpfService.get).toHaveBeenCalledWith();
     });
 
-    it('should throw an exception', () => {
+    it('should throw an exception', async () => {
       jest.spyOn(getAllCpfService, 'get').mockRejectedValueOnce(new Error());
 
-      expect(cpfController.getAll()).rejects.toThrowError();
+      await expect(cpfController.getAll()).rejects.toThrowError();
 
       expect(getAllCpfService.get).toHaveBeenCalledTimes(1);
 
@@ -104,12 +104,12 @@ describe('CpfController', () => {
       expect(verifyIfCpfRegisteredService.verify).toHaveBeenCalledTimes(1);
     });
 
-    it('should throw an exception', () => {
+    it('should throw an exception', async () => {
       jest
         .spyOn(verifyIfCpfRegisteredService, 'verify')
         .mockRejectedValueOnce(new Error());
 
-      expect(
+      await expect(
         cpfController.verifyIfRegistered(mockCpf.cpf),
       ).rejects.toThrowError(new Error());
 
@@ -131,12 +131,12 @@ describe('CpfController', () => {
       expect(registerCpfService.register).toHaveBeenCalledWith(mockCpf.cpf);
     });
 
-    it('should throw an exception', () => {
+    it('should throw an exception', async () => {
       jest
         .spyOn(registerCpfService, 'register')
         .mockRejectedValueOnce(new Error());
 
-      expect(cpfController.register(mockCpf.cpf)).rejects.toThrowError();
+      await expect(cpfController.register(mockCpf.cpf)).rejects.toThrowError();
 
       expect(registerCpfService.register).toHaveBeenCalledTimes(1);
 
@@ -155,10 +155,10 @@ describe('CpfController', () => {
       expect(deleteCpfService.delete).toHaveBeenCalledWith(mockCpf.cpf);
     });
 
-    it('should throw an exception', () => {
+    it('should throw an exception', async () => {
       jest.spyOn(deleteCpfService, 'delete').mockRejectedValueOnce(new Error());
 
-      expect(cpfController.delete(mockCpf.cpf)).rejects.toThrowError();
+      await expect(cpfController.delete(mockCpf.cpf)).rejects.toThrowError();
 
       expect(deleteCpfService.delete).toHaveBeenCalledTimes(1);
 
