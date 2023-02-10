@@ -1,5 +1,5 @@
 # API-CPF
-> API para controle de CPFs
+> API para controle de CPFs com 94.4% de test coverage
 
 ## Installation
 
