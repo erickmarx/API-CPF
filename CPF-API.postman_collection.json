@@ -1,0 +1,95 @@
+{
+	"info": {
+		"_postman_id": "6556bdb4-16ee-4b07-8602-d16da1ed17ca",
+		"name": "CPF API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16904784"
+	},
+	"item": [
+		{
+			"name": "All CPFs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/cpf",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"cpf"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Verify if CPF registered",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/cpf/54402573068",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"cpf",
+						"54402573068"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register CPF",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"cpf\": \"54402573068\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/cpf",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"cpf"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete CPF",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/cpf/54402573068",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"cpf",
+						"54402573068"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "localhost:3000"
+		}
+	]
+}
