@@ -14,7 +14,6 @@ export class CpfRepository {
     });
   }
 
-
   //Pega todos os registros de CPFs não deletados
   async getAll(): Promise<CpfRepository.GetAll> {
     return await this.prismaService.cpf.findMany({

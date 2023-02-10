@@ -1,11 +1,18 @@
 import { TestingModule, Test } from '@nestjs/testing';
 import { VerifyIfCpfRegisteredService } from '~/modules/cpf/services';
-import { CpfResponse } from '~/modules/cpf/@types/cpf-response.type';
 import { CpfRepository } from '~/repository/cpf.repository';
 import { NotFoundCpfException } from '~/errors/not-found-cpf.exception';
+import { CpfResponse } from '~/modules/cpf/@types/cpf-response.type';
 
-const mockCpf: CpfResponse = { cpf: '88195561039', createdAt: new Date() };
-const mockCpfRepositoryGet: CpfRepository.Get = { id: '1', ...mockCpf };
+const mockCpf: string = '88195561039';
+const mockVerifyIfCpfRegistered: CpfResponse = {
+  cpf: mockCpf,
+  createdAt: new Date(),
+};
+const mockCpfRepositoryGet: CpfRepository.Get = {
+  id: '1',
+  ...mockVerifyIfCpfRegistered,
+};
 
 describe('verifyIfCpfRegisteredService', () => {
   let verifyIfCpfRegisteredService: VerifyIfCpfRegisteredService;
@@ -38,13 +45,13 @@ describe('verifyIfCpfRegisteredService', () => {
 
   describe('verify', () => {
     it('should return a cpf and createdAt', async () => {
-      const result = await verifyIfCpfRegisteredService.verify(mockCpf.cpf);
+      const result = await verifyIfCpfRegisteredService.verify(mockCpf);
 
-      expect(result).toEqual(mockCpf);
+      expect(result).toEqual<CpfResponse>(mockVerifyIfCpfRegistered);
 
       expect(cpfRepository.get).toHaveBeenCalledTimes(1);
 
-      expect(cpfRepository.get).toHaveBeenCalledWith(mockCpf.cpf);
+      expect(cpfRepository.get).toHaveBeenCalledWith(mockCpf);
     });
 
     it('should throw an exception', async () => {
@@ -53,14 +60,14 @@ describe('verifyIfCpfRegisteredService', () => {
         .mockRejectedValueOnce(new Error());
 
       await expect(
-        verifyIfCpfRegisteredService.verify(mockCpf.cpf),
+        verifyIfCpfRegisteredService.verify(mockCpf),
       ).rejects.toThrowError(new Error());
     });
 
     it('should throw NotFoundCpf exception', async () => {
       jest.spyOn(cpfRepository, 'get').mockResolvedValueOnce(null);
 
-      const result = verifyIfCpfRegisteredService.verify(mockCpf.cpf);
+      const result = verifyIfCpfRegisteredService.verify(mockCpf);
 
       await expect(result).rejects.toThrow(NotFoundCpfException);
     });

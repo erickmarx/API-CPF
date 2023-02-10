@@ -1,11 +1,10 @@
 import { TestingModule, Test } from '@nestjs/testing';
 import { GetAllCpfService } from '~/modules/cpf/services';
-import { CpfResponse } from '~/modules/cpf/@types/cpf-response.type';
 import { CpfRepository } from '~/repository/cpf.repository';
 
-const mockCpf: CpfResponse = { cpf: '88195561039', createdAt: new Date() };
+const mockCpf: string = '88195561039';
 const mockCpfRepositoryGetAll: CpfRepository.GetAll = [
-  { ...mockCpf, createdAt: new Date() },
+  { cpf: mockCpf, createdAt: new Date() },
 ];
 
 describe('GetAllCpfService', () => {
